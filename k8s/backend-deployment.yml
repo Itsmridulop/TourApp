@@ -19,3 +19,59 @@ spec:
           image: mridul30/tour-app-backend:latest
           ports:
             - containerPort: 8080
+          env:
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: tour-app-configmap
+                  key: PORT
+            - name: JWT_EXPIRES_IN
+              valueFrom:
+                configMapKeyRef:
+                  name: tour-app-configmap
+                  key: JWT_EXPIRES_IN
+            - name: JWT_COOKIE_EXPIRES_IN
+              valueFrom:
+                configMapKeyRef:
+                  name: tour-app-configmap
+                  key: JWT_COOKIE_EXPIRES_IN
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: tour-app-secrets
+                  key: MONGO_URI
+            - name: EMAIL_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: tour-app-secrets
+                  key: EMAIL_HOST
+            - name: EMAIL_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: tour-app-secrets
+                  key: EMAIL_PORT
+            - name: EMAIL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: tour-app-secrets
+                  key: EMAIL_USERNAME
+            - name: EMAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: tour-app-secrets
+                  key: EMAIL_PASSWORD
+            - name: CLOUDINARY_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: tour-app-secrets
+                  key: CLOUDINARY_API_KEY
+            - name: CLOUDINARY_API_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: tour-app-secrets
+                  key: CLOUDINARY_API_SECRET
+            - name: CLOUDINARY_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: tour-app-secrets
+                  key: CLOUDINARY_NAME

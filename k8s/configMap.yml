@@ -1,0 +1,9 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: tour-app-configmap
+  namespace: tour-app
+data:
+  PORT: "8080"
+  JWT_EXPIRES_IN: 7d
+  JWT_COOKIE_EXPIRES_IN: "7"
