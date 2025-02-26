@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tour-app-backend
+  namespace: tour-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      name: backend-pod
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: tour-app-backend
+          image: mridul30/tour-app-backend:latest
+          ports:
+            - containerPort: 8080

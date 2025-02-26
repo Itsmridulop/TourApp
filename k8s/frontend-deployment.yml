@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tour-app-frontend
+  namespace: tour-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: tour-app-frontend
+  template:
+    metadata:
+      labels:
+        app: tour-app-frontend
+    spec:
+      containers:
+        - name: tour-app-frontend
+          image: mridul30/tour-app:latest
+          ports:
+            - containerPort: 80

@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  tour-app:
+    build: ./tour-app
+    image: mridul30/tour-app
+    container_name: tour-app
+    ports:
+      - "80:80"
+    depends_on:
+      - tour-app-backend
+    networks:
+      - tour-nw
+
+  tour-app-backend:
+    build: ./tour-app-api
+    image: mridul30/tour-app-backend
+    container_name: tour-app-backend
+    ports:
+      - "8080:8080"
+    env_file:
+      - "./tour-app-api/.config.env"
+    networks:
+      - tour-nw
+
+networks:
+  tour-nw:
+    driver: bridge
